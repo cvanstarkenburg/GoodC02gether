@@ -10,9 +10,13 @@
 
 body {
     font-family: Arial, Helvetica, sans-serif;
-    background-color: #f5f7f6;
+    background-color: #E3ECE8;
     color: #30203d;
     line-height: 1.6;
+
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 a {
@@ -53,7 +57,7 @@ a {
 .logo {
     font-size: 28px;
     font-weight: bold;
-    color: #3b1d4d;
+    color: #245B66;
 }
 
 .logo span {
@@ -80,11 +84,11 @@ a {
 
 .navigation a:hover {
     background-color: #f0eaf3;
-    color: #3b1d4d;
+    color: #245B66;
 }
 
 .navigation a.active {
-    background-color: #3b1d4d;
+    background-color: #245B66;
     color: white;
 }
 
@@ -200,7 +204,7 @@ p {
 ======================================== */
 
 .info-box {
-    background: linear-gradient(135deg, #3b1d4d, #58306b);
+    background: linear-gradient(135deg, #245B66, #58306b);
     color: white;
     border-radius: 14px;
     padding: 35px;
@@ -242,8 +246,9 @@ p {
 ======================================== */
 
 .footer {
-    background-color: #351b45;
+    background-color: #245B66;
     color: #ddd4e1;
+    margin-top: auto;
 }
 
 .footer-content {
@@ -288,7 +293,7 @@ p {
     display: block;
     font-weight: bold;
     margin-bottom: 7px;
-    color: #3b1d4d;
+    color: #245B66;
 }
 
 .form-group input,
@@ -323,7 +328,7 @@ p {
 .button {
     display: inline-block;
     border: none;
-    background-color: #3b1d4d;
+    background-color: #245B66;
     color: white;
     padding: 13px 22px;
     border-radius: 7px;
@@ -364,7 +369,7 @@ p {
 }
 
 .data-table th {
-    background-color: #3b1d4d;
+    background-color: #245B66;;
     color: white;
     text-align: left;
     padding: 15px;
@@ -404,7 +409,7 @@ p {
 .footprint-number {
     font-size: 50px;
     font-weight: bold;
-    color: #3b1d4d;
+    color: #245B66;;
 }
 
 .footprint-number span {
@@ -454,7 +459,7 @@ p {
 
 .profile-label {
     font-weight: bold;
-    color: #3b1d4d;
+    color: #245B66;
 }
 
 

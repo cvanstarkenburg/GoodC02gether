@@ -90,7 +90,7 @@ article {
 }
 
 /* Mobiele weergave */
-@media (max-width: 768px) {
+@media only screen and (max-width: 768px) {
 
     header {
         padding: 15px;

@@ -19,6 +19,20 @@ nav {
     gap: 10px;
 }
 
+nav a {
+    color: #30203d;
+    text-decoration: none;
+    padding: 8px 12px;
+    border: 1px solid #30203d;
+    background-color: white;
+    transition: 0.5s;
+}
+
+nav a:hover {
+    background-color: #245B66;
+    color: white;
+}
+
 main {
     width: 95%;
     margin: 30px auto;
@@ -28,6 +42,30 @@ main {
 form {
     display: grid;
     gap: 10px;
+    max-width: 500px;
+
+    background-color: white;
+    padding: 20px;
+}
+
+.persoonlijke-gegevens-blok {
+    background-color: white;
+    padding: 20px;
+    max-width: 500px;
+    margin-bottom: 20px;
+}
+
+.leaseauto-blok {
+    background-color: white;
+    padding: 20px;
+    max-width: 500px;
+    margin-bottom: 20px;
+}
+
+.klantlocaties-blok {
+    background-color: white;
+    padding: 20px;
+    max-width: 500px;
 }
 
 form p {

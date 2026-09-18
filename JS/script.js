@@ -1,0 +1,1 @@
+// Nienke: Alvast voor je JavaScript: Ook hier heb je het algemene bestand script.js voor je hele webapp, en daarnaast paginaspecifieke bestanden.

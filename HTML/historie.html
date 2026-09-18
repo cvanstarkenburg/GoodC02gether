@@ -21,13 +21,13 @@
             <a href="gegevens.html">Mijn gegevens</a>
         </nav>
     </header>
-
+<!-- Nienke: Loop de uitlijning van je elementen na: hier is <main> bijvoorbeeld genest binnen <body> en zou dus naar rechts moeten. Dit is vooral voor leesbaarheid, zodat je snel ziet wat waarin genest is. Ik heb trouwens op meer pagina's uitlijningsfouten gezien, maar dit niet overal apart aangegeven. Probeer er gewoonte van te maken om elke keer dat je je HTML aanpast te controleren of de uitlijning nog klopt -->
 <main>
 
     <h1>Mijn historie</h1>
 
     <form>
-
+        <!-- Nienke: Waarom zit elk deel van het formulier in een <p>? Tip: Lees https://www.w3schools.com/html/html_paragraphs.asp en https://www.w3schools.com/html/html_div.asp na. (Deze opmerking geldt ook voor de <p>-elementen in <form>-elementen op andere pagina's.)-->
         <p>
             <label for="begindatum">Begindatum:</label>
             <input type="date" id="begindatum">
@@ -39,6 +39,7 @@
         </p>
 
         <p>
+            <!-- Nienke: Weten jullie wat type="submit" hier doet? Zo ja, goed bezig met ofwel je inlezen in buttons en alvast anticiperen op wat straks nodig is wanneer JS wordt toegevoegd! Ofwel goed bezig met je AI gegenereerde code langslopen en na dit te hebben opgezocht je gerealiseerd te hebben dat dit later nodig is en dus mag blijven. Zo nee, loop je AI code langs en zorg dat je van elk detail weet waarom het daar staat! (Deze opmerking geldt ook voor een aantal knoppen op andere pagina's.) -->
             <button type="submit">Toon historie</button>
         </p>
 

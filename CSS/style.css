@@ -1,0 +1,3 @@
+/* Nienke: Gebruik dit bestand voor styling die herbruikbaar is over de hele webapp. Zet hier dus bijvoorbeeld de variabelen voor je kleuren en lettertype, en de styling van de header en footer. 
+
+Maak daarnaast een apart css bestand voor elke met daarin paginaspecifieke styling. Let daarbij op het 'cascading' aspect: wat onderaan staat gaat voor bij gelijke specificiteit. Dus bij gelijke specificiteit van twee regels in de verschillende bestanden, wint de regel in het bestand dat onderaan staat in je HTML.*/

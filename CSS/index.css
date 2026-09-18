@@ -1,8 +1,11 @@
+/* Nienke: waar zijn je variabelen? Bijvoorbeeld voor de kleuren, en voor de hoogte van je header en footer. Ik zie bijvoorbeeld dat donkerpaars 3x hieronder terugkomen met een hexcode.*/
+
 body {
     margin: 0;
     font-family: Arial, Helvetica, sans-serif;
     background-color: #E3ECE8;
     color: #30203d;
+    /* Nienke: Waarom is het nodig om je body een min-height te geven? */
     min-height: 100vh;
 }
 
@@ -14,13 +17,16 @@ header {
     align-items: center;
 }
 
+/* Nienke: Waarom specificeer je een gap in een flexbox? (Deze eerste vraag geldt ook voor meer van jullie flexboxen.) Waarom maak je überhaupt een flexbox van de nav-elementen? Op zich is een flexbox in een flexbox (je header is ook al een flexbox) wel mogelijk, maar wat is de reden dat je dat hier doet? */
 nav {
     display: flex;
     gap: 10px;
 }
 
+/* Nienke: Mooie styling van de navigatieknoppen, ook met de hover erbij! */
 nav a {
     color: #30203d;
+    /* Nienke: 'text-decoration: none' is al de default. Waarom specificeer je die? */
     text-decoration: none;
     padding: 8px 12px;
     border: 1px solid #30203d;
@@ -36,10 +42,12 @@ nav a:hover {
 main {
     width: 95%;
     margin: 30px auto;
+    /* Nienke: Waar is onderstaande 50px op gebaseerd? Op dit moment valt je footer in ieder geval onder je scherm. Tip: geeft zowel je header als footer een vaste hoogte via de 'height' property, en bepaal die via een variabele, zodat indien je de hoogte aan wil passen, je dit maar op één plek hoeft te doen. Sowieso valt het me op dat jullie eigenlijk nergens een vaste 'height' hebben ingesteld en vooral met margin en padding werken. Dat kan goed werken, maar denk goed na over waarom je die keuze maakt. */
     min-height: calc(100vh - 50px);
 }
 
 form {
+    /* Nienke: Waarom heb je hier voor grid gekozen i.p.v. flex? (Deze opmerking geldt ook op meer plekken.) */
     display: grid;
     gap: 10px;
     max-width: 500px;
@@ -73,6 +81,7 @@ form p {
     gap: 5px;
 }
 
+/* Nienke: Herbruikbaarheid is goed, maar is het nodig wanneer het om slechts één property gaat die de inputvelden en de buttons-binnen-forms met elkaar gemeen hebben? */
 input,
 form button {
     padding: 10px;
@@ -89,8 +98,9 @@ article {
     justify-content: space-between;
 }
 
+/* Nienke: goed gebruik van een annotatie! */
 /* Mobiele weergave */
-@media (max-width: 768px) {
+@media only screen and (max-width: 768px) {
 
     header {
         padding: 15px;
@@ -106,6 +116,7 @@ article {
     main {
         width: 90%;
         margin: 20px auto;
+        /* Nienke: Waar is onderstaande 40px op gebaseerd? In de mobiele weergave is de hoogte van je header groter dan in de standaardweergave, maar je hebt hier een kleiner aantal pixels benoemd om van de viewportheight af te trekken dan in je standaardweergave. */
         min-height: calc(100vh - 40px);
     }
 

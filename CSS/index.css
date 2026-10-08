@@ -13,17 +13,28 @@ header {
     background-color: white;
     padding: 20px;
     display: flex;
-    justify-content: space-between;
     align-items: center;
 
     position: sticky;
     top: 0;
     z-index: 1000;
+
+    transition: 0.5s ease;
 }
 
 nav {
     display: flex;
     gap: 10px;
+
+    /* Zorgt ervoor dat de navigatie rechts komt te staan */
+    margin-left: auto;
+
+    /* Nodig voor het inklappen */
+    max-height: 100px;
+    opacity: 1;
+    overflow: hidden;
+
+    transition: max-height 0.5s ease, opacity 0.3s ease;
 }
 
 nav a {
@@ -39,6 +50,40 @@ nav a:hover {
     background-color: #245B66;
     color: white;
 }
+
+
+/* Knop voor het inklappen */
+.header-toggle {
+    color: #30203d;
+    background-color: white;
+    border: 1px solid #30203d;
+
+    padding: 8px 12px;
+    margin-left: 10px;
+
+    cursor: pointer;
+    font-size: 14px;
+
+    transition: 0.5s;
+}
+
+.header-toggle:hover {
+    background-color: #245B66;
+    color: white;
+}
+
+
+/* Ingeklapte header */
+header.collapsed {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+header.collapsed nav {
+    max-height: 0;
+    opacity: 0;
+}
+
 
 main {
     width: 95%;
@@ -96,18 +141,35 @@ article {
     justify-content: space-between;
 }
 
+
 /* Mobiele weergave */
 @media only screen and (max-width: 768px) {
 
     header {
         padding: 15px;
-        flex-direction: column;
+        flex-wrap: wrap;
         gap: 15px;
     }
 
+    /* Logo blijft links staan */
+    .header-logo-container {
+        flex: 1;
+    }
+
     nav {
-        flex-direction: column;
+        order: 3;
         width: 100%;
+
+        margin-left: 0;
+
+        flex-direction: column;
+
+        /* Ruimte voor de uitgeklapte navigatie */
+        max-height: 500px;
+    }
+
+    .header-toggle {
+        margin-left: 10px;
     }
 
     main {
@@ -125,6 +187,7 @@ article {
         gap: 10px;
     }
 }
+
 
 .header-logo-container {
     display: flex;

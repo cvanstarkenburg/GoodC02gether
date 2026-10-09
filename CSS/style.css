@@ -1,13 +1,12 @@
-/* Nienke: Gebruik dit bestand voor styling die herbruikbaar is over de hele webapp. Zet hier dus bijvoorbeeld de variabelen voor je kleuren en lettertype, en de styling van de header en footer. 
-
-Maak daarnaast een apart css bestand voor elke met daarin paginaspecifieke styling. Let daarbij op het 'cascading' aspect: wat onderaan staat gaat voor bij gelijke specificiteit. Dus bij gelijke specificiteit van twee regels in de verschillende bestanden, wint de regel in het bestand dat onderaan staat in je HTML.*/
+* {
+    box-sizing: border-box;
+}
 
 body {
     margin: 0;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-
     font-family: Arial, Helvetica, sans-serif;
     background-color: #E3ECE8;
     color: #30203d;
@@ -15,29 +14,40 @@ body {
 
 header {
     background-color: white;
-    padding: 20px;
+    padding: 15px;
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
-
+    gap: 15px;
     position: sticky;
     top: 0;
     z-index: 1000;
-
     transition: 0.5s ease;
+}
+
+.header-logo-container {
+    display: flex;
+    align-items: center;
+    flex: 1;
+    gap: 10px;
+}
+
+.header-logo {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
 }
 
 nav {
     display: flex;
+    flex-direction: column;
     gap: 10px;
-
-    /* Zorgt ervoor dat de navigatie rechts komt te staan */
-    margin-left: auto;
-
-    /* Nodig voor het inklappen */
-    max-height: 100px;
+    order: 3;
+    width: 100%;
+    margin-left: 0;
+    max-height: 500px;
     opacity: 1;
     overflow: hidden;
-
     transition: max-height 0.5s ease, opacity 0.3s ease;
 }
 
@@ -55,96 +65,91 @@ nav a:hover {
     color: white;
 }
 
-
 main {
-    width: 95%;
-    margin: 30px auto;
+    width: 90%;
+    margin: 20px auto;
     flex: 1;
+}
+
+h1 {
+    font-size: 1.5rem;
 }
 
 form {
     display: grid;
+    grid-template-columns: 100%;
     gap: 10px;
-    max-width: 500px;
-
+    width: 100%;
+    max-width: 540px;
     background-color: white;
     padding: 20px;
 }
 
 .form-groep {
     display: grid;
+    grid-template-columns: 100%;
     gap: 5px;
     margin: 1em 0;
 }
 
 input,
+select,
+textarea,
 form button {
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
     padding: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1rem;
 }
 
 footer {
     background-color: #d9dde1;
-    padding: 15px;
-    margin-top: 30px;
+    padding: 10px;
+    margin-top: 20px;
 }
 
 footer article {
     display: flex;
-    justify-content: space-between;
-}
-
-
-/* Mobiele weergave */
-@media only screen and (max-width: 768px) {
-
-    header {
-        padding: 15px;
-        flex-wrap: wrap;
-        gap: 15px;
-    }
-
-    /* Logo blijft links staan */
-    .header-logo-container {
-        flex: 1;
-    }
-
-    nav {
-        order: 3;
-        width: 100%;
-
-        margin-left: 0;
-
-        flex-direction: column;
-
-        /* Ruimte voor de uitgeklapte navigatie */
-        max-height: 500px;
-    }
-
-    main {
-        width: 90%;
-        margin: 20px auto;
-    }
-
-    footer {
-        padding: 10px;
-        margin-top: 20px;
-    }
-
-    footer article {
-        flex-direction: column;
-        gap: 10px;
-    }
-}
-
-
-.header-logo-container {
-    display: flex;
-    align-items: center;
+    flex-direction: column;
     gap: 10px;
 }
 
-.header-logo {
-    width: 32px;
-    height: 32px;
-    object-fit: contain;
+@media only screen and (min-width: 1025px) {
+    header {
+        padding: 20px;
+    }
+
+    .header-logo-container {
+        flex: 0 1 auto;
+    }
+
+    nav {
+        flex-direction: row;
+        flex-wrap: wrap;
+        order: 0;
+        width: auto;
+        margin-left: auto;
+    }
+
+    main {
+        width: 95%;
+        margin: 30px auto;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    footer {
+        padding: 15px;
+        margin-top: 30px;
+    }
+
+    footer article {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
 }

@@ -1,0 +1,22 @@
+/* Gegevensblokken komen alleen op Mijn gegevens voor. */
+.persoonlijke-gegevens-blok {
+    background-color: white;
+    padding: 20px;
+    max-width: 500px;
+    margin-bottom: 20px;
+}
+
+.leaseauto-blok {
+    background-color: white;
+    padding: 20px;
+    max-width: 500px;
+    margin-bottom: 20px;
+}
+
+.klantlocaties-blok {
+    background-color: white;
+    padding: 20px;
+    max-width: 500px;
+}
+
+

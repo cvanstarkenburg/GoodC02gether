@@ -30,13 +30,13 @@
         <h1>Nieuwe werkdag</h1>
 
         <form>
-            <p>
+            <div class="form-groep">
                 <label for="datum">Datum:</label>
                 <input type="date" id="datum">
                 <button type="button">Vandaag</button>
-            </p>
+            </div>
 
-            <p>
+            <div class="form-groep">
                 <label for="werklocatie">Basis werklocatie:</label>
                 <select id="werklocatie">
                     <option>Kies een werklocatie</option>
@@ -44,33 +44,33 @@
                     <option>Thuis</option>
                     <option>Klantlocatie</option>
                 </select>
-            </p>
+            </div>
 
-            <p>
+            <div class="form-groep">
                 <label for="blikjes">Aantal blikjes op HQ:</label>
                 <input type="number" id="blikjes">
-            </p>
+            </div>
 
-            <p>
+            <div class="form-groep">
                 <label for="schermen">Aantal beeldschermen:</label>
                 <input type="number" id="schermen">
-            </p>
+            </div>
 
-            <p>
+            <div class="form-groep">
                 <label for="uren">Aantal uren actieve schermen:</label>
                 <input type="number" id="uren" step="0.1">
-            </p>
+            </div>
 
-            <p>
+            <div class="form-groep">
                 <label for="ai">Aantal AI verzoeken:</label>
                 <input type="number" id="ai">
-            </p>
+            </div>
 
             <h2>Ritten toevoegen</h2>
 
-            <p>
+            <div class="form-groep">
                 <button type="button">+ Voeg rit toe</button>
-            </p>
+            </div>
 
             <button type="submit">Voer werkdag in</button>
         </form>

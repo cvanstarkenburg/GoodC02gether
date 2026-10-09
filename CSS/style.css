@@ -71,9 +71,10 @@ form {
     padding: 20px;
 }
 
-form p {
+.form-groep {
     display: grid;
     gap: 5px;
+    margin: 1em 0;
 }
 
 input,

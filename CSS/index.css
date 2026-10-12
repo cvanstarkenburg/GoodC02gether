@@ -1,34 +1,3 @@
-.header-toggle {
-    color: #30203d;
-    background-color: white;
-    border: 1px solid #30203d;
-
-    padding: 8px 12px;
-    margin-left: 10px;
-
-    cursor: pointer;
-    font-size: 14px;
-
-    transition: 0.5s;
-}
-
-.header-toggle:hover {
-    background-color: #245B66;
-    color: white;
-}
-
-
-
-header.collapsed {
-    padding-top: 10px;
-    padding-bottom: 10px;
-}
-
-header.collapsed nav {
-    max-height: 0;
-    opacity: 0;
-}
-
 main p {
     max-width: 800px;
     line-height: 1.6;

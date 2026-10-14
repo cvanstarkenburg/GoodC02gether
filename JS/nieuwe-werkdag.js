@@ -1,4 +1,5 @@
 const formulier = document.querySelector("#werkdag-formulier");
+const dataKey = "werkdag-data";
 
 // Knop Vandaag
 const datumVeld = document.querySelector("#datum");
@@ -49,7 +50,7 @@ if (formulier) {
         if (formulierGeldig) {
             const formData = new FormData(formulier);
             const dataObject = Object.fromEntries(formData);
-
+            storeData(dataObject);
             formulier.reset();
 
             formulier.querySelectorAll(".ongeldig").forEach(function (veld) {
@@ -61,4 +62,23 @@ if (formulier) {
             });
         }
     });
+}
+
+
+function fetchData() {
+    const opgeslagenData = localStorage.getItem(dataKey);
+
+    if (opgeslagenData === null) {
+        return { werkdagen: [] };
+    } else {
+        return JSON.parse(opgeslagenData);
+    }
+}
+
+function storeData(dataObject) {
+    const gegevens = fetchData();
+    gegevens.werkdagen.push(dataObject);
+
+    const gegevensTekst = JSON.stringify(gegevens);
+    localStorage.setItem(dataKey, gegevensTekst);
 }

@@ -12,7 +12,7 @@ if (datumVeld && vandaagKnop) {
         const maand = String(vandaag.getMonth() + 1).padStart(2, "0");
         const jaar = vandaag.getFullYear();
 
-        datumVeld.value = `${dag}-${maand}-${jaar}`;
+        datumVeld.value = `${jaar}-${maand}-${dag}`;
     });
 }
 
@@ -47,6 +47,9 @@ if (formulier) {
         });
 
         if (formulierGeldig) {
+            const formData = new FormData(formulier);
+            const dataObject = Object.fromEntries(formData);
+
             formulier.reset();
 
             formulier.querySelectorAll(".ongeldig").forEach(function (veld) {

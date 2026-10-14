@@ -1,1 +1,10 @@
-/* Deze pagina gebruikt voorlopig alleen de algemene styling uit style.css. */
+.foutmelding {
+    color: red;
+    font-size: 0.9rem;
+    margin-top: 2px;
+}
+
+input.ongeldig,
+select.ongeldig {
+    border: 1px solid red;
+}

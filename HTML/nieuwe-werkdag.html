@@ -2,21 +2,24 @@
 <html lang="nl">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GoodCO2gether</title>
     <link rel="icon" type="image/png" href="../images/FaviconGCO2.png">
 
     <link rel="stylesheet" href="../CSS/style.css">
     <link rel="stylesheet" href="../CSS/nieuwe-werkdag.css">
     <script src="../JS/script.js" defer></script>
+    <script src="../JS/nieuwe-werkdag.js" defer></script>
 </head>
+
 <body>
     <header>
         <div class="header-logo-container">
             <img src="../images/FaviconGCO2.png" alt="Logo" class="header-logo">
             GoodCO2gether
         </div>
+
         <nav id="main-navigation">
             <a href="#" id="home-button">Home</a>
             <a href="#" id="werkdag-button">Nieuwe werkdag</a>
@@ -39,41 +42,76 @@
     <main>
         <h1>Nieuwe werkdag</h1>
 
-        <form>
+        <form id="werkdag-formulier" novalidate>
             <div class="form-groep">
                 <label for="datum">Datum:</label>
-                <input type="date" id="datum">
-                <button type="button">Vandaag</button>
+                <input
+                    type="text"
+                    id="datum"
+                    name="datum"
+                    placeholder="dd-mm-jjjj"
+                    required>
+                <small class="foutmelding"></small>
+                <button type="button" id="vandaag-knop">Vandaag</button>
             </div>
 
             <div class="form-groep">
                 <label for="werklocatie">Basis werklocatie:</label>
-                <select id="werklocatie">
-                    <option>Kies een werklocatie</option>
-                    <option>Hoofdkantoor</option>
-                    <option>Thuis</option>
-                    <option>Klantlocatie</option>
+                <select id="werklocatie" name="werklocatie" required>
+                    <option value="">Kies een werklocatie</option>
+                    <option value="hoofdkantoor">Hoofdkantoor</option>
+                    <option value="thuis">Thuis</option>
+                    <option value="klantlocatie">Klantlocatie</option>
                 </select>
+                <small class="foutmelding"></small>
             </div>
 
             <div class="form-groep">
                 <label for="blikjes">Aantal blikjes op HQ:</label>
-                <input type="number" id="blikjes">
+                <input
+                    type="number"
+                    id="blikjes"
+                    name="blikjes"
+                    min="0"
+                    step="1"
+                    required>
+                <small class="foutmelding"></small>
             </div>
 
             <div class="form-groep">
                 <label for="schermen">Aantal beeldschermen:</label>
-                <input type="number" id="schermen">
+                <input
+                    type="number"
+                    id="schermen"
+                    name="schermen"
+                    min="0"
+                    step="1"
+                    required>
+                <small class="foutmelding"></small>
             </div>
 
             <div class="form-groep">
                 <label for="uren">Aantal uren actieve schermen:</label>
-                <input type="number" id="uren" step="0.1">
+                <input
+                    type="number"
+                    id="uren"
+                    name="uren"
+                    min="0"
+                    step="0.1"
+                    required>
+                <small class="foutmelding"></small>
             </div>
 
             <div class="form-groep">
                 <label for="ai">Aantal AI verzoeken:</label>
-                <input type="number" id="ai">
+                <input
+                    type="number"
+                    id="ai"
+                    name="ai"
+                    min="0"
+                    step="1"
+                    required>
+                <small class="foutmelding"></small>
             </div>
 
             <h2>Ritten toevoegen</h2>
@@ -93,7 +131,6 @@
             <span>Disclaimer</span>
         </article>
     </footer>
-
 </body>
 
 </html>

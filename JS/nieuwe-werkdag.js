@@ -1,10 +1,23 @@
-const formulier = document.querySelector("#werkdag-formulier");
+const formulier = document.getElementById("werkdag-formulier");
+const datumVeld = document.getElementById("datum");
+const vandaagKnop = document.getElementById("vandaag-knop");
 const dataKey = "werkdag-data";
+const veldIds = ["datum", "werklocatie", "blikjes", "schermen", "uren", "ai"];
+
+const ritPopup = document.getElementById("rit-popup");
+const ritFormulier = document.getElementById("rit-formulier");
+const ritToevoegenKnop = document.getElementById("rit-toevoegen-knop");
+const ritAnnulerenKnop = document.getElementById("rit-annuleren-knop");
+const vervoersmiddelVeld = document.getElementById("vervoersmiddel");
+const vervoersmiddelFout = document.getElementById("vervoersmiddel-fout");
+const retourVeld = document.getElementById("retour");
+
+const ritKnopTekst = "+ Voeg rit toe";
+const ritToegevoegdTekst = "✓ Rit toegevoegd";
+
+let rit = null;
 
 // Knop Vandaag
-const datumVeld = document.querySelector("#datum");
-const vandaagKnop = document.querySelector("#datum + .foutmelding + button");
-
 if (datumVeld && vandaagKnop) {
     vandaagKnop.addEventListener("click", function () {
         const vandaag = new Date();
@@ -22,11 +35,11 @@ if (formulier) {
     formulier.addEventListener("submit", function (event) {
         event.preventDefault();
 
-        const velden = formulier.querySelectorAll("input, select");
         let formulierGeldig = true;
 
-        velden.forEach(function (veld) {
-            const foutmelding = veld.parentElement.querySelector(".foutmelding");
+        veldIds.forEach(function (veldId) {
+            const veld = document.getElementById(veldId);
+            const foutmelding = document.getElementById(`${veldId}-fout`);
 
             foutmelding.textContent = "";
             veld.classList.remove("ongeldig");
@@ -50,20 +63,61 @@ if (formulier) {
         if (formulierGeldig) {
             const formData = new FormData(formulier);
             const dataObject = Object.fromEntries(formData);
+            dataObject.rit = rit;
+
             storeData(dataObject);
             formulier.reset();
-
-            formulier.querySelectorAll(".ongeldig").forEach(function (veld) {
-                veld.classList.remove("ongeldig");
-            });
-
-            formulier.querySelectorAll(".foutmelding").forEach(function (melding) {
-                melding.textContent = "";
-            });
+            resetRit();
         }
     });
 }
 
+// Pop-up rit toevoegen
+if (ritPopup && ritFormulier && ritToevoegenKnop && ritAnnulerenKnop) {
+    ritToevoegenKnop.addEventListener("click", function () {
+        ritPopup.showModal();
+    });
+
+    ritAnnulerenKnop.addEventListener("click", function () {
+        ritPopup.close();
+    });
+
+    ritFormulier.addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        vervoersmiddelFout.textContent = "";
+        vervoersmiddelVeld.classList.remove("ongeldig");
+
+        if (!vervoersmiddelVeld.checkValidity()) {
+            vervoersmiddelVeld.classList.add("ongeldig");
+            vervoersmiddelFout.textContent = "Dit veld is verplicht.";
+            return;
+        }
+
+        rit = {
+            vervoersmiddel: vervoersmiddelVeld.value,
+            retour: retourVeld.checked
+        };
+
+        ritToevoegenKnop.textContent = ritToegevoegdTekst;
+        ritToevoegenKnop.disabled = true;
+
+        ritPopup.close();
+    });
+
+    // Pop-up leegmaken bij sluiten (ook bij Escape)
+    ritPopup.addEventListener("close", function () {
+        ritFormulier.reset();
+        vervoersmiddelFout.textContent = "";
+        vervoersmiddelVeld.classList.remove("ongeldig");
+    });
+}
+
+function resetRit() {
+    rit = null;
+    ritToevoegenKnop.textContent = ritKnopTekst;
+    ritToevoegenKnop.disabled = false;
+}
 
 function fetchData() {
     const opgeslagenData = localStorage.getItem(dataKey);

@@ -8,3 +8,45 @@ input.ongeldig,
 select.ongeldig {
     border: 1px solid red;
 }
+
+/* Pop-up rit toevoegen */
+.rit-popup {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 1.5rem;
+}
+
+.rit-popup::backdrop {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+/* Checkbox met groen vinkje */
+.rit-popup input[type="checkbox"] {
+    appearance: none;
+    display: inline-grid;
+    place-content: center;
+    width: 1.2rem;
+    height: 1.2rem;
+    border: 1px solid #767676;
+    border-radius: 3px;
+    background-color: #fff;
+    cursor: pointer;
+    vertical-align: middle;
+}
+
+.rit-popup input[type="checkbox"]:checked::before {
+    content: "✓";
+    color: green;
+    font-weight: bold;
+}
+
+.rit-popup input[type="checkbox"]:focus-visible {
+    outline: 2px solid green;
+    outline-offset: 2px;
+}
+
+/* Knop rit toevoegen na toevoegen van een rit */
+#rit-toevoegen-knop:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}

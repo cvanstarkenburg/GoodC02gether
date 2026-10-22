@@ -68,6 +68,7 @@ if (formulier) {
             storeData(dataObject);
             formulier.reset();
             resetRit();
+            meldWerkdagOpgeslagen();
         }
     });
 }

@@ -147,6 +147,46 @@ form button {
     font-size: 1rem;
 }
 
+/* Toast */
+.toast {
+    position: fixed;
+    top: 12px;
+    left: 12px;
+    right: 12px;
+    z-index: 1100;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 18px;
+    background-color: #2E7D32;
+    color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    font-weight: bold;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    pointer-events: none;
+}
+
+.toast.toast-zichtbaar {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.toast-icoon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 22px;
+    height: 22px;
+    background-color: white;
+    color: #2E7D32;
+    border-radius: 50%;
+    font-size: 14px;
+}
+
 /* Footer */
 footer {
     background-color: #d9dde1;
@@ -193,6 +233,12 @@ footer article {
 
     h1 {
         font-size: 2rem;
+    }
+
+    .toast {
+        top: 20px;
+        left: auto;
+        right: 20px;
     }
 
     footer {

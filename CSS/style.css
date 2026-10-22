@@ -1,35 +1,4 @@
-.header-toggle {
-    color: #30203d;
-    background-color: white;
-    border: 1px solid #30203d;
-
-    padding: 8px 12px;
-    margin-left: 10px;
-
-    cursor: pointer;
-    font-size: 14px;
-
-    transition: 0.5s;
-}
-
-.header-toggle:hover {
-    background-color: #245B66;
-    color: white;
-}
-
-
-
-header.collapsed {
-    padding-top: 10px;
-    padding-bottom: 10px;
-}
-
-header.collapsed nav {
-    max-height: 0;
-    opacity: 0;
-}
-*
-{
+* {
     box-sizing: border-box;
 }
 
@@ -43,6 +12,7 @@ body {
     color: #30203d;
 }
 
+/* Header */
 header {
     background-color: white;
     padding: 15px;
@@ -54,6 +24,11 @@ header {
     top: 0;
     z-index: 1000;
     transition: 0.5s ease;
+}
+
+header.collapsed {
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
 .header-logo-container {
@@ -69,6 +44,36 @@ header {
     object-fit: contain;
 }
 
+.header-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: #30203d;
+    background-color: white;
+    border: 1px solid #30203d;
+    padding: 8px 12px;
+    margin-left: 10px;
+    cursor: pointer;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    transition: 0.5s;
+}
+
+.header-toggle:hover {
+    background-color: #245B66;
+    color: white;
+}
+
+.header-toggle-icoon {
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+.header-toggle[aria-expanded="true"] .header-toggle-icoon {
+    transform: rotate(180deg);
+}
+
+/* Navigatie */
 nav {
     display: flex;
     flex-direction: column;
@@ -80,6 +85,11 @@ nav {
     opacity: 1;
     overflow: hidden;
     transition: max-height 0.5s ease, opacity 0.3s ease;
+}
+
+header.collapsed nav {
+    max-height: 0;
+    opacity: 0;
 }
 
 nav a {
@@ -96,6 +106,7 @@ nav a:hover {
     color: white;
 }
 
+/* Inhoud */
 main {
     width: 90%;
     margin: 20px auto;
@@ -106,6 +117,7 @@ h1 {
     font-size: 1.5rem;
 }
 
+/* Formulieren */
 form {
     display: grid;
     grid-template-columns: 100%;
@@ -135,6 +147,7 @@ form button {
     font-size: 1rem;
 }
 
+/* Footer */
 footer {
     background-color: #d9dde1;
     padding: 10px;
@@ -147,8 +160,10 @@ footer article {
     gap: 10px;
 }
 
+/* Desktop */
 @media only screen and (min-width: 1025px) {
-    header {
+    header,
+    header.collapsed {
         padding: 20px;
     }
 
@@ -156,12 +171,19 @@ footer article {
         flex: 0 1 auto;
     }
 
-    nav {
+    .header-toggle {
+        display: none;
+    }
+
+    nav,
+    header.collapsed nav {
         flex-direction: row;
         flex-wrap: wrap;
         order: 0;
         width: auto;
         margin-left: auto;
+        max-height: 500px;
+        opacity: 1;
     }
 
     main {

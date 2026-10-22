@@ -14,30 +14,30 @@
 </head>
 
 <body>
-    <header>
-        <div class="header-logo-container">
-            <img src="../images/FaviconGCO2.png" alt="Logo" class="header-logo">
-            GoodCO2gether
-        </div>
+    <header id="site-header">
+    <div class="header-logo-container">
+        <img src="../images/FaviconGCO2.png" alt="GoodCO2gether logo" class="header-logo">
+        <span>GoodCO2gether</span>
+    </div>
 
-        <nav id="main-navigation">
-            <a href="#" id="home-button">Home</a>
-            <a href="#" id="werkdag-button">Nieuwe werkdag</a>
-            <a href="#" id="historie-button">Mijn historie</a>
-            <a href="#" id="footprint-button">Mijn footprint</a>
-            <a href="#" id="gegevens-button">Mijn gegevens</a>
-        </nav>
+    <nav id="main-navigation">
+        <a href="#" id="home-button">Home</a>
+        <a href="#" id="werkdag-button">Nieuwe werkdag</a>
+        <a href="#" id="historie-button">Mijn historie</a>
+        <a href="#" id="footprint-button">Mijn footprint</a>
+        <a href="#" id="gegevens-button">Mijn gegevens</a>
+    </nav>
 
-        <button
-            id="header-toggle"
-            class="header-toggle"
-            type="button"
-            aria-label="Header inklappen"
-            aria-expanded="true"
-            aria-controls="main-navigation">
-            ⌃
-        </button>
-    </header>
+    <button
+        id="header-toggle"
+        class="header-toggle"
+        type="button"
+        aria-expanded="true"
+        aria-controls="main-navigation">
+        Menu
+        <span class="header-toggle-icoon" aria-hidden="true">▾</span>
+    </button>
+</header>
 
     <main>
         <h1>Nieuwe werkdag</h1>
@@ -50,7 +50,7 @@
                     id="datum"
                     name="datum"
                     required>
-                <small class="foutmelding"></small>
+                <small class="foutmelding" id="datum-fout"></small>
                 <button type="button" id="vandaag-knop">Vandaag</button>
             </div>
 
@@ -62,7 +62,7 @@
                     <option value="thuis">Thuis</option>
                     <option value="klantlocatie">Klantlocatie</option>
                 </select>
-                <small class="foutmelding"></small>
+                <small class="foutmelding" id="werklocatie-fout"></small>
             </div>
 
             <div class="form-groep">
@@ -74,7 +74,7 @@
                     min="0"
                     step="1"
                     required>
-                <small class="foutmelding"></small>
+                <small class="foutmelding" id="blikjes-fout"></small>
             </div>
 
             <div class="form-groep">
@@ -86,7 +86,7 @@
                     min="0"
                     step="1"
                     required>
-                <small class="foutmelding"></small>
+                <small class="foutmelding" id="schermen-fout"></small>
             </div>
 
             <div class="form-groep">
@@ -98,7 +98,7 @@
                     min="0"
                     step="0.1"
                     required>
-                <small class="foutmelding"></small>
+                <small class="foutmelding" id="uren-fout"></small>
             </div>
 
             <div class="form-groep">
@@ -110,17 +110,41 @@
                     min="0"
                     step="1"
                     required>
-                <small class="foutmelding"></small>
+                <small class="foutmelding" id="ai-fout"></small>
             </div>
 
             <h2>Ritten toevoegen</h2>
 
             <div class="form-groep">
-                <button type="button">+ Voeg rit toe</button>
+                <button type="button" id="rit-toevoegen-knop">+ Voeg rit toe</button>
             </div>
 
             <button type="submit">Voer werkdag in</button>
         </form>
+
+        <dialog id="rit-popup" class="rit-popup" aria-labelledby="rit-popup-titel">
+            <form id="rit-formulier" novalidate>
+                <h2 id="rit-popup-titel">Rit toevoegen</h2>
+
+                <div class="form-groep">
+                    <label for="vervoersmiddel">Vervoersmiddel:</label>
+                    <select id="vervoersmiddel" name="vervoersmiddel" required>
+                        <option value="">Kies een vervoersmiddel</option>
+                        <option value="auto">Auto</option>
+                        <option value="openbaar-vervoer">Openbaar vervoer</option>
+                    </select>
+                    <small class="foutmelding" id="vervoersmiddel-fout"></small>
+                </div>
+
+                <div class="form-groep">
+                    <input type="checkbox" id="retour" name="retour">
+                    <label for="retour">Retour</label>
+                </div>
+
+                <button type="button" id="rit-annuleren-knop">Annuleren</button>
+                <button type="submit">Toevoegen</button>
+            </form>
+        </dialog>
     </main>
 
     <footer>

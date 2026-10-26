@@ -1,14 +1,18 @@
 <!DOCTYPE html>
 <html lang="nl">
-
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GoodCO2gether</title>
     <link rel="icon" type="image/png" href="../images/FaviconGCO2.png">
-
     <link rel="stylesheet" href="../CSS/style.css">
     <link rel="stylesheet" href="../CSS/historie.css">
+    <link rel="stylesheet" href="../CSS/kleurenblind.css">
+    <script>
+        if (localStorage.getItem("kleurenblind") === "true") {
+            document.documentElement.dataset.theme = "kleurenblind";
+        }
+    </script>
     <script src="../JS/script.js" defer></script>
     <script src="../JS/historie.js" defer></script>
 </head>
@@ -17,21 +21,25 @@
         <span class="toast-icoon" aria-hidden="true">✓</span>
         <span>Werkdag succesvol opgeslagen</span>
     </div>
-
     <header id="site-header">
         <div class="header-logo-container">
             <img src="../images/FaviconGCO2.png" alt="GoodCO2gether logo" class="header-logo">
             <span>GoodCO2gether</span>
         </div>
-
         <nav id="main-navigation">
             <a href="#" id="home-button">Home</a>
             <a href="#" id="werkdag-button">Nieuwe werkdag</a>
             <a href="#" id="historie-button">Mijn historie</a>
             <a href="#" id="footprint-button">Mijn footprint</a>
             <a href="#" id="gegevens-button">Mijn gegevens</a>
+            <button
+                id="kleurenblind-knop"
+                class="kleurenblind-knop"
+                type="button"
+                aria-pressed="false">
+                Kleurenblind-modus
+            </button>
         </nav>
-
         <button
             id="header-toggle"
             class="header-toggle"
@@ -42,30 +50,22 @@
             <span class="header-toggle-icoon" aria-hidden="true">▾</span>
         </button>
     </header>
-
     <main>
-
         <h1>Mijn historie</h1>
-
         <form>
-
             <div class="form-groep">
                 <label for="begindatum">Begindatum:</label>
                 <input type="date" id="begindatum">
             </div>
-
             <div class="form-groep">
                 <label for="einddatum">Einddatum:</label>
                 <input type="date" id="einddatum">
             </div>
-
             <div class="form-groep">
                 <button type="submit">Toon historie</button>
             </div>
-
         </form>
     </main>
-
     <footer>
         <article>
             <span>© 2024 Goodzo B.V.</span>
@@ -73,7 +73,5 @@
             <span>Disclaimer</span>
         </article>
     </footer>
-
 </body>
-
 </html>

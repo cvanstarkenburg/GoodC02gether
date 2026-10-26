@@ -1,33 +1,41 @@
 <!DOCTYPE html>
 <html lang="nl">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GoodCO2gether</title>
     <link rel="icon" type="image/png" href="../images/FaviconGCO2.png">
-
     <link rel="stylesheet" href="../CSS/style.css">
     <link rel="stylesheet" href="../CSS/index.css">
+    <link rel="stylesheet" href="../CSS/kleurenblind.css">
+    <script>
+        if (localStorage.getItem("kleurenblind") === "true") {
+            document.documentElement.dataset.theme = "kleurenblind";
+        }
+    </script>
     <script src="../JS/script.js" defer></script>
     <script src="../JS/index.js" defer></script>
 </head>
-
 <body>
     <header id="site-header">
         <div class="header-logo-container">
             <img src="../images/FaviconGCO2.png" alt="GoodCO2gether logo" class="header-logo">
             <span>GoodCO2gether</span>
         </div>
-
         <nav id="main-navigation">
             <a href="#" id="home-button">Home</a>
             <a href="#" id="werkdag-button">Nieuwe werkdag</a>
             <a href="#" id="historie-button">Mijn historie</a>
             <a href="#" id="footprint-button">Mijn footprint</a>
             <a href="#" id="gegevens-button">Mijn gegevens</a>
+            <button
+                id="kleurenblind-knop"
+                class="kleurenblind-knop"
+                type="button"
+                aria-pressed="false">
+                Kleurenblind-modus
+            </button>
         </nav>
-
         <button
             id="header-toggle"
             class="header-toggle"
@@ -38,17 +46,14 @@
             <span class="header-toggle-icoon" aria-hidden="true">▾</span>
         </button>
     </header>
-
-   <main>
+    <main>
         <h1>Welkom Benjamin,</h1>
         <h2>Jouw werkdag, jouw impact.</h2>
-
         <p>
             Elke werkdag bestaat uit kleine keuzes: waar je werkt, hoe je reist
             en welke digitale middelen je gebruikt. Met GoodCO2gether ontdek je
             hoe die keuzes bijdragen aan jouw CO₂-voetafdruk.
         </p>
-
         <p>
             Voeg een nieuwe werkdag toe en houd je ritten, schermgebruik en
             AI-verzoeken bij. In Mijn historie vind je jouw ingevoerde werkdagen
@@ -56,7 +61,6 @@
             gekozen periode. Zo krijg je overzicht over je werkdagen en inzicht
             in je berekende uitstoot.
         </p>
-
         <p>
             Je hoeft niet alles tegelijk te veranderen. Inzicht is een eerste
             stap om bewuster te kiezen: bijvoorbeeld vaker thuiswerken als dat
@@ -64,14 +68,12 @@
             je ze niet gebruikt. Begin met het invullen van je werkdag en
             ontdek waar jouw mogelijkheden liggen.
         </p>
-
         <div>
             <button id="werkdag-main-button">Nieuwe werkdag</button>
             <button id="historie-main-button">Mijn historie</button>
             <button id="footprint-main-button">Mijn footprint</button>
         </div>
     </main>
-
     <footer>
         <article>
             <span>© 2024 Goodzo B.V.</span>
@@ -80,5 +82,4 @@
         </article>
     </footer>
 </body>
-
 </html>

@@ -1,38 +1,45 @@
 <!DOCTYPE html>
 <html lang="nl">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GoodCO2gether</title>
     <link rel="icon" type="image/png" href="../images/FaviconGCO2.png">
-
     <link rel="stylesheet" href="../CSS/style.css">
     <link rel="stylesheet" href="../CSS/nieuwe-werkdag.css">
+    <link rel="stylesheet" href="../CSS/kleurenblind.css">
+    <script>
+        if (localStorage.getItem("kleurenblind") === "true") {
+            document.documentElement.dataset.theme = "kleurenblind";
+        }
+    </script>
     <script src="../JS/script.js" defer></script>
     <script src="../JS/nieuwe-werkdag.js" defer></script>
 </head>
-
 <body>
     <div id="succes-toast" class="toast" role="status" aria-live="polite">
         <span class="toast-icoon" aria-hidden="true">✓</span>
         <span>Werkdag succesvol opgeslagen</span>
     </div>
-
     <header id="site-header">
         <div class="header-logo-container">
             <img src="../images/FaviconGCO2.png" alt="GoodCO2gether logo" class="header-logo">
             <span>GoodCO2gether</span>
         </div>
-
         <nav id="main-navigation">
             <a href="#" id="home-button">Home</a>
             <a href="#" id="werkdag-button">Nieuwe werkdag</a>
             <a href="#" id="historie-button">Mijn historie</a>
             <a href="#" id="footprint-button">Mijn footprint</a>
             <a href="#" id="gegevens-button">Mijn gegevens</a>
+            <button
+                id="kleurenblind-knop"
+                class="kleurenblind-knop"
+                type="button"
+                aria-pressed="false">
+                Kleurenblind-modus
+            </button>
         </nav>
-
         <button
             id="header-toggle"
             class="header-toggle"
@@ -43,10 +50,8 @@
             <span class="header-toggle-icoon" aria-hidden="true">▾</span>
         </button>
     </header>
-
     <main>
         <h1>Nieuwe werkdag</h1>
-
         <form id="werkdag-formulier" novalidate>
             <div class="form-groep">
                 <label for="datum">Datum:</label>
@@ -58,7 +63,6 @@
                 <small class="foutmelding" id="datum-fout"></small>
                 <button type="button" id="vandaag-knop">Vandaag</button>
             </div>
-
             <div class="form-groep">
                 <label for="werklocatie">Basis werklocatie:</label>
                 <select id="werklocatie" name="werklocatie" required>
@@ -69,7 +73,6 @@
                 </select>
                 <small class="foutmelding" id="werklocatie-fout"></small>
             </div>
-
             <div class="form-groep">
                 <label for="blikjes">Aantal blikjes op HQ:</label>
                 <input
@@ -81,7 +84,6 @@
                     required>
                 <small class="foutmelding" id="blikjes-fout"></small>
             </div>
-
             <div class="form-groep">
                 <label for="schermen">Aantal beeldschermen:</label>
                 <input
@@ -93,7 +95,6 @@
                     required>
                 <small class="foutmelding" id="schermen-fout"></small>
             </div>
-
             <div class="form-groep">
                 <label for="uren">Aantal uren actieve schermen:</label>
                 <input
@@ -105,7 +106,6 @@
                     required>
                 <small class="foutmelding" id="uren-fout"></small>
             </div>
-
             <div class="form-groep">
                 <label for="ai">Aantal AI verzoeken:</label>
                 <input
@@ -117,20 +117,15 @@
                     required>
                 <small class="foutmelding" id="ai-fout"></small>
             </div>
-
             <h2>Ritten toevoegen</h2>
-
             <div class="form-groep">
                 <button type="button" id="rit-toevoegen-knop">+ Voeg rit toe</button>
             </div>
-
             <button type="submit" id="werkdag-invoeren-knop">Voer werkdag in</button>
         </form>
-
         <dialog id="rit-popup" class="rit-popup" aria-labelledby="rit-popup-titel">
             <form id="rit-formulier" novalidate>
                 <h2 id="rit-popup-titel">Rit toevoegen</h2>
-
                 <div class="form-groep">
                     <label for="vervoersmiddel">Vervoersmiddel:</label>
                     <select id="vervoersmiddel" name="vervoersmiddel" required>
@@ -140,18 +135,15 @@
                     </select>
                     <small class="foutmelding" id="vervoersmiddel-fout"></small>
                 </div>
-
                 <div class="form-groep">
                     <input type="checkbox" id="retour" name="retour">
                     <label for="retour">Retour</label>
                 </div>
-
                 <button type="button" id="rit-annuleren-knop">Annuleren</button>
                 <button type="submit">Toevoegen</button>
             </form>
         </dialog>
     </main>
-
     <footer>
         <article>
             <span>© 2024 Goodzo B.V.</span>
@@ -160,5 +152,4 @@
         </article>
     </footer>
 </body>
-
 </html>

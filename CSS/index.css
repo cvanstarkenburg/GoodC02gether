@@ -2,7 +2,6 @@ main p {
     max-width: 800px;
     line-height: 1.6;
 }
-
 main div {
     display: flex;
     flex-direction: column;
@@ -10,23 +9,20 @@ main div {
     max-width: 800px;
     margin-top: 20px;
 }
-
 main button {
-    color: #30203d;
-    background-color: white;
-    border: 1px solid #30203d;
+    color: var(--kleur-tekst);
+    background-color: var(--kleur-vlak);
+    border: 1px solid var(--kleur-tekst);
     padding: 12px 16px;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 1rem;
     cursor: pointer;
     transition: 0.5s;
 }
-
 main button:hover {
-    background-color: #245B66;
+    background-color: var(--kleur-accent);
     color: white;
 }
-
 @media only screen and (min-width: 1025px) {
     main div {
         flex-direction: row;

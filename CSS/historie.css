@@ -1,1 +1,52 @@
-/* Deze pagina gebruikt voorlopig alleen de algemene styling uit style.css. */
+#historie-formulier {
+    max-width: 850px;
+}
+
+#historie-melding {
+    margin: 20px 0;
+}
+
+#historie-overzicht {
+    max-width: 850px;
+}
+
+.historie-werkdag {
+    background-color: var(--kleur-vlak);
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.historie-werkdag h2 {
+    margin-top: 0;
+    font-size: 1.2rem;
+}
+
+.historie-werkdag p {
+    overflow-wrap: break-word;
+}
+
+.historie-details {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    margin: 15px 0;
+}
+
+.historie-details p {
+    padding-right: 10px;
+}
+
+.historie-details strong {
+    display: block;
+    margin-bottom: 5px;
+}
+
+@media only screen and (min-width: 1025px) {
+    #historie-formulier {
+        grid-template-columns: 1fr 1fr 1fr;
+        align-items: end;
+    }
+
+    .historie-details {
+        grid-template-columns: 25% 25% 25% 25%;
+    }
+}

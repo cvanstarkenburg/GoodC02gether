@@ -52,7 +52,7 @@
     </header>
     <main>
         <h1>Mijn historie</h1>
-        <form>
+        <form id="historie-formulier">
             <div class="form-groep">
                 <label for="begindatum">Begindatum:</label>
                 <input type="date" id="begindatum">
@@ -65,6 +65,8 @@
                 <button type="submit">Toon historie</button>
             </div>
         </form>
+        <p id="historie-melding" role="status"></p>
+        <section id="historie-overzicht" aria-label="Opgeslagen werkdagen"></section>
     </main>
     <footer>
         <article>

@@ -14,6 +14,8 @@
         }
     </script>
     <script src="../JS/script.js" defer></script>
+    <script src="../JS/voorbeeldwerkdagen.js" defer></script>
+    <script src="../JS/voetafdruk.js" defer></script>
 </head>
 <body>
     <header id="site-header">
@@ -47,7 +49,7 @@
     </header>
     <main>
         <h1>Mijn footprint</h1>
-        <form>
+        <form id="footprint-formulier">
             <div class="form-groep">
                 <label for="begindatum">Begindatum:</label>
                 <input type="date" id="begindatum">
@@ -58,6 +60,20 @@
             </div>
             <button type="submit">Toon footprint</button>
         </form>
+        <p id="footprint-melding" role="status"></p>
+        <div class="footprint-indeling">
+            <section id="footprint-resultaat" class="footprint-vlak footprint-verborgen">
+                <h2>Jouw geschatte uitstoot</h2>
+                <p id="footprint-totaal" class="footprint-totaal"></p>
+                <p id="footprint-aantal"></p>
+                <p id="footprint-waarschuwing" role="status"></p>
+                <h3>Verdeling</h3>
+                <p><strong>Ritten:</strong> <span id="uitstoot-ritten"></span></p>
+                <p><strong>Schermen:</strong> <span id="uitstoot-schermen"></span></p>
+                <p><strong>AI-verzoeken:</strong> <span id="uitstoot-ai"></span></p>
+                <p><strong>Blikjes:</strong> <span id="uitstoot-blikjes"></span></p>
+            </section>
+        </div>
     </main>
     <footer>
         <article>

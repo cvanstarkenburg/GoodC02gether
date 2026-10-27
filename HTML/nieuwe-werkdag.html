@@ -126,6 +126,16 @@
         <dialog id="rit-popup" class="rit-popup" aria-labelledby="rit-popup-titel">
             <form id="rit-formulier" novalidate>
                 <h2 id="rit-popup-titel">Rit toevoegen</h2>
+                <p class="rit-uitleg">Vertrek: Griekenlandlaan 150, Zoetermeer.</p>
+                <div class="form-groep">
+                    <label for="bestemming">Bestemming:</label>
+                    <select id="bestemming" name="bestemming" required>
+                        <option value="">Kies een bestemming</option>
+                        <option value="kantoor">Kantoor — Kleveringweg 4, Delft</option>
+                        <option value="bouwhuis">Bouwhuis — Zilverstraat 69, Zoetermeer</option>
+                    </select>
+                    <small class="foutmelding" id="bestemming-fout"></small>
+                </div>
                 <div class="form-groep">
                     <label for="vervoersmiddel">Vervoersmiddel:</label>
                     <select id="vervoersmiddel" name="vervoersmiddel" required>
@@ -134,6 +144,13 @@
                         <option value="openbaar-vervoer">Openbaar vervoer</option>
                     </select>
                     <small class="foutmelding" id="vervoersmiddel-fout"></small>
+                </div>
+                <div class="form-groep">
+                    <label for="kilometers">Kilometers enkele reis:</label>
+                    <input type="number" id="kilometers" name="kilometers"
+                        min="0.1" step="0.1" required>
+                    <small class="foutmelding" id="kilometers-fout"></small>
+                    <small class="rit-uitleg">De afstand is vooraf ingevuld. Pas deze aan als je meer of minder kilometers hebt gereisd. Vink ‘Retour’ aan om de heen- en terugreis mee te tellen.</small>
                 </div>
                 <div class="form-groep">
                     <input type="checkbox" id="retour" name="retour">

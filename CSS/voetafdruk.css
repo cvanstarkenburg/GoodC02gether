@@ -1,1 +1,50 @@
-/* Deze pagina gebruikt voorlopig alleen de algemene styling uit style.css. */
+.footprint-verborgen {
+    display: none;
+}
+
+#footprint-formulier,
+.footprint-indeling {
+    max-width: 900px;
+}
+
+#footprint-formulier {
+    margin-bottom: 20px;
+}
+
+#footprint-formulier .form-groep {
+    margin: 0;
+}
+
+#footprint-formulier input,
+#footprint-formulier button {
+    height: 44px;
+}
+
+.footprint-indeling {
+    display: grid;
+    gap: 20px;
+    margin: 20px 0;
+}
+
+.footprint-vlak {
+    background-color: var(--kleur-vlak);
+    padding: 20px;
+    min-width: 0;
+}
+
+.footprint-vlak h2 {
+    margin-top: 0;
+}
+
+.footprint-totaal {
+    font-size: 1.8rem;
+    font-weight: bold;
+    overflow-wrap: break-word;
+}
+
+@media only screen and (min-width: 1025px) {
+    #footprint-formulier {
+        grid-template-columns: 1fr 1fr 1fr;
+        align-items: end;
+    }
+}

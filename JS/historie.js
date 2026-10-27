@@ -71,6 +71,10 @@ function toonWerkdag(werkdag) {
     titel.textContent = werkdag.datum;
     blok.appendChild(titel);
 
+    if (werkdag.voorbeeld) {
+        voegGegevenToe(blok, "Registratie", "Voorbeeldwerkdag");
+    }
+
     let werklocatie = werkdag.werklocatie;
 
     if (werklocatie === "hoofdkantoor") {
@@ -108,6 +112,26 @@ function toonWerkdag(werkdag) {
     }
 
     voegGegevenToe(blok, "Rit", ritTekst);
+
+    if (werkdag.rit) {
+        if (werkdag.rit.bestemming === "kantoor") {
+            voegGegevenToe(blok, "Bestemming", "Kantoor — Delft");
+        } else if (werkdag.rit.bestemming === "bouwhuis") {
+            voegGegevenToe(blok, "Bestemming", "Bouwhuis — Zoetermeer");
+        }
+
+        if (werkdag.rit.kilometers > 0) {
+            let afstand = Number(werkdag.rit.kilometers);
+
+            if (werkdag.rit.retour) {
+                afstand = afstand * 2;
+            }
+
+            voegGegevenToe(blok, "Afstand totaal", afstand + " km");
+        } else {
+            voegGegevenToe(blok, "Afstand", "Niet vastgelegd bij deze oudere rit");
+        }
+    }
     historieOverzicht.appendChild(blok);
 }
 

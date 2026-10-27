@@ -9,11 +9,12 @@ const ritFormulier = document.getElementById("rit-formulier");
 const ritToevoegenKnop = document.getElementById("rit-toevoegen-knop");
 const ritAnnulerenKnop = document.getElementById("rit-annuleren-knop");
 const vervoersmiddelVeld = document.getElementById("vervoersmiddel");
-const vervoersmiddelFout = document.getElementById("vervoersmiddel-fout");
+const bestemmingVeld = document.getElementById("bestemming");
+const kilometersVeld = document.getElementById("kilometers");
+const ritVeldIds = ["bestemming", "vervoersmiddel", "kilometers"];
 const retourVeld = document.getElementById("retour");
 
 const ritKnopTekst = "+ Voeg rit toe";
-const ritToegevoegdTekst = "✓ Rit toegevoegd";
 
 let rit = null;
 
@@ -76,6 +77,17 @@ if (formulier) {
 // Pop-up rit toevoegen
 if (ritPopup && ritFormulier && ritToevoegenKnop && ritAnnulerenKnop) {
     ritToevoegenKnop.addEventListener("click", function () {
+        if (rit) {
+            bestemmingVeld.value = rit.bestemming;
+            vervoersmiddelVeld.value = rit.vervoersmiddel;
+            kilometersVeld.value = rit.kilometers;
+            retourVeld.checked = rit.retour;
+        } else if (document.getElementById("werklocatie").value === "hoofdkantoor") {
+            bestemmingVeld.value = "kantoor";
+        } else if (document.getElementById("werklocatie").value === "klantlocatie") {
+            bestemmingVeld.value = "bouwhuis";
+        }
+
         ritPopup.showModal();
     });
 
@@ -86,22 +98,38 @@ if (ritPopup && ritFormulier && ritToevoegenKnop && ritAnnulerenKnop) {
     ritFormulier.addEventListener("submit", function (event) {
         event.preventDefault();
 
-        vervoersmiddelFout.textContent = "";
-        vervoersmiddelVeld.classList.remove("ongeldig");
+        let ritGeldig = true;
 
-        if (!vervoersmiddelVeld.checkValidity()) {
-            vervoersmiddelVeld.classList.add("ongeldig");
-            vervoersmiddelFout.textContent = "Dit veld is verplicht.";
+        ritVeldIds.forEach(function (veldId) {
+            const veld = document.getElementById(veldId);
+            const foutmelding = document.getElementById(veldId + "-fout");
+            foutmelding.textContent = "";
+            veld.classList.remove("ongeldig");
+
+            if (!veld.checkValidity()) {
+                ritGeldig = false;
+                veld.classList.add("ongeldig");
+
+                if (veld.validity.valueMissing) {
+                    foutmelding.textContent = "Dit veld is verplicht.";
+                } else {
+                    foutmelding.textContent = "Vul een afstand groter dan 0 in, met maximaal één decimaal.";
+                }
+            }
+        });
+
+        if (!ritGeldig) {
             return;
         }
 
         rit = {
+            bestemming: bestemmingVeld.value,
             vervoersmiddel: vervoersmiddelVeld.value,
+            kilometers: Number(kilometersVeld.value),
             retour: retourVeld.checked
         };
 
-        ritToevoegenKnop.textContent = ritToegevoegdTekst;
-        ritToevoegenKnop.disabled = true;
+        ritToevoegenKnop.textContent = "✓ Rit toegevoegd — aanpassen";
 
         ritPopup.close();
     });
@@ -109,8 +137,10 @@ if (ritPopup && ritFormulier && ritToevoegenKnop && ritAnnulerenKnop) {
     // Pop-up leegmaken bij sluiten (ook bij Escape)
     ritPopup.addEventListener("close", function () {
         ritFormulier.reset();
-        vervoersmiddelFout.textContent = "";
-        vervoersmiddelVeld.classList.remove("ongeldig");
+        ritVeldIds.forEach(function (veldId) {
+            document.getElementById(veldId + "-fout").textContent = "";
+            document.getElementById(veldId).classList.remove("ongeldig");
+        });
     });
 }
 
@@ -136,4 +166,23 @@ function storeData(dataObject) {
 
     const gegevensTekst = JSON.stringify(gegevens);
     localStorage.setItem(dataKey, gegevensTekst);
+}
+bestemmingVeld.addEventListener("change", vulAfstandIn);
+vervoersmiddelVeld.addEventListener("change", vulAfstandIn);
+
+function vulAfstandIn() {
+    const bestemming = bestemmingVeld.value;
+    const vervoersmiddel = vervoersmiddelVeld.value;
+
+    if (bestemming === "kantoor" && vervoersmiddel === "auto") {
+        kilometersVeld.value = 18;
+    } else if (bestemming === "kantoor" && vervoersmiddel === "openbaar-vervoer") {
+        kilometersVeld.value = 22;
+    } else if (bestemming === "bouwhuis" && vervoersmiddel === "auto") {
+        kilometersVeld.value = 4.5;
+    } else if (bestemming === "bouwhuis" && vervoersmiddel === "openbaar-vervoer") {
+        kilometersVeld.value = 6;
+    } else {
+        kilometersVeld.value = "";
+    }
 }

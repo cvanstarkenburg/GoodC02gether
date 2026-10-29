@@ -1,9 +1,9 @@
-/* Kleurenblind-modus (gebaseerd op het Okabe-Ito-palet) */
+/* Kleurenblind-modus */
 [data-theme="kleurenblind"] {
-    --kleur-tekst: #1A1A1A;
-    --kleur-accent: #0072B2;
-    --kleur-achtergrond: #F2F2F2;
-    --kleur-footer: #DDDDDD;
-    --kleur-succes: #0072B2;
-    --kleur-fout: #B34700;
+    --kleur-tekst: #1a06f2;
+    --kleur-accent: #009cf7;
+    --kleur-achtergrond: #000000;
+    --kleur-footer: #00ff22;
+    --kleur-succes: #109ff2;
+    --kleur-fout: #ff1900;
 }

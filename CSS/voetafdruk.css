@@ -42,6 +42,27 @@
     overflow-wrap: break-word;
 }
 
+.footprint-boom {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.footprint-boom img {
+    width: 260px;
+    max-width: 100%;
+    height: auto;
+}
+
+.boom-status {
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.boom-uitleg {
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
 @media only screen and (min-width: 1025px) {
     #footprint-formulier {
         grid-template-columns: 1fr 1fr 1fr;

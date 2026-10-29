@@ -3,6 +3,9 @@ const begindatumVeld = document.getElementById("begindatum");
 const einddatumVeld = document.getElementById("einddatum");
 const footprintMelding = document.getElementById("footprint-melding");
 const footprintResultaat = document.getElementById("footprint-resultaat");
+const footprintBoom = document.getElementById("footprint-boom");
+const boomAfbeelding = document.getElementById("boom-afbeelding");
+const boomStatus = document.getElementById("boom-status");
 
 const uitstootAuto = 0.2;
 const uitstootOv = 0.05;
@@ -27,6 +30,7 @@ function fetchData() {
 
 function toonFootprint() {
     footprintResultaat.classList.add("footprint-verborgen");
+    footprintBoom.classList.add("footprint-verborgen");
     footprintMelding.textContent = "";
     document.getElementById("footprint-waarschuwing").textContent = "";
 
@@ -99,16 +103,31 @@ function toonFootprint() {
     document.getElementById("uitstoot-ai").textContent = ai.toFixed(3) + " kg CO₂";
     document.getElementById("uitstoot-blikjes").textContent = blikjes.toFixed(3) + " kg CO₂";
 
+    if (ontbrekendeRitten === 0) {
+        const gemiddelde = totaal / aantal;
+        document.getElementById("footprint-gemiddelde").textContent =
+            "Gemiddeld " + gemiddelde.toFixed(3) + " kg CO₂ per ingevulde werkdag";
+
+        if (gemiddelde < 2) {
+            boomAfbeelding.src = "../images/boom-vol.svg";
+            boomStatus.textContent = "Volle boom — lage geschatte uitstoot";
+        } else if (gemiddelde < 5) {
+            boomAfbeelding.src = "../images/boom-halfvol.svg";
+            boomStatus.textContent = "Halfvolle boom — gemiddelde geschatte uitstoot";
+        } else {
+            boomAfbeelding.src = "../images/boom-kaal.svg";
+            boomStatus.textContent = "Kale boom — hoge geschatte uitstoot";
+        }
+
+        boomAfbeelding.alt = boomStatus.textContent;
+        footprintBoom.classList.remove("footprint-verborgen");
+    }
+
     if (ontbrekendeRitten > 0) {
         document.getElementById("footprint-totaal").textContent = "Bekend subtotaal: " + totaal.toFixed(3) + " kg CO₂";
         document.getElementById("footprint-waarschuwing").textContent =
             "Onvolledige berekening: bij " + ontbrekendeRitten +
             " rit(ten) ontbreken kilometers of een bekend vervoersmiddel. Die ritten zijn niet meegerekend.";
-    }
-
-    if (aantalVoorbeelden > 0) {
-        document.getElementById("footprint-aantal").textContent +=
-            " (waarvan " + aantalVoorbeelden + " voorbeeldwerkdagen)";
     }
 
     footprintResultaat.classList.remove("footprint-verborgen");

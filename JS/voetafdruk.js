@@ -96,27 +96,27 @@ function toonFootprint() {
     }
 
     const totaal = ritten + schermen + ai + blikjes;
-    document.getElementById("footprint-totaal").textContent = totaal.toFixed(3) + " kg CO₂";
-    document.getElementById("footprint-aantal").textContent = "Aantal gevonden werkdagen: " + aantal;
-    document.getElementById("uitstoot-ritten").textContent = ritten.toFixed(3) + " kg CO₂";
-    document.getElementById("uitstoot-schermen").textContent = schermen.toFixed(3) + " kg CO₂";
-    document.getElementById("uitstoot-ai").textContent = ai.toFixed(3) + " kg CO₂";
-    document.getElementById("uitstoot-blikjes").textContent = blikjes.toFixed(3) + " kg CO₂";
+    document.getElementById("footprint-totaal").textContent = totaal.toFixed(3).replace(".", ",") + " kg CO₂";
+    document.getElementById("footprint-aantal").textContent = "Aantal werkdagen: " + aantal;
+    document.getElementById("uitstoot-ritten").textContent = ritten.toFixed(3).replace(".", ",") + " kg CO₂";
+    document.getElementById("uitstoot-schermen").textContent = schermen.toFixed(3).replace(".", ",") + " kg CO₂";
+    document.getElementById("uitstoot-ai").textContent = ai.toFixed(3).replace(".", ",") + " kg CO₂";
+    document.getElementById("uitstoot-blikjes").textContent = blikjes.toFixed(3).replace(".", ",") + " kg CO₂";
 
     if (ontbrekendeRitten === 0) {
         const gemiddelde = totaal / aantal;
         document.getElementById("footprint-gemiddelde").textContent =
-            "Gemiddeld " + gemiddelde.toFixed(3) + " kg CO₂ per ingevulde werkdag";
+            gemiddelde.toFixed(3).replace(".", ",") + " kg CO₂";
 
         if (gemiddelde < 2) {
             boomAfbeelding.src = "../images/boom-vol.svg";
-            boomStatus.textContent = "Volle boom — lage geschatte uitstoot";
+            boomStatus.textContent = "Lage gemiddelde uitstoot";
         } else if (gemiddelde < 5) {
             boomAfbeelding.src = "../images/boom-halfvol.svg";
-            boomStatus.textContent = "Halfvolle boom — gemiddelde geschatte uitstoot";
+            boomStatus.textContent = "Gemiddelde uitstoot";
         } else {
             boomAfbeelding.src = "../images/boom-kaal.svg";
-            boomStatus.textContent = "Kale boom — hoge geschatte uitstoot";
+            boomStatus.textContent = "Hoge gemiddelde uitstoot";
         }
 
         boomAfbeelding.alt = boomStatus.textContent;
@@ -124,7 +124,7 @@ function toonFootprint() {
     }
 
     if (ontbrekendeRitten > 0) {
-        document.getElementById("footprint-totaal").textContent = "Bekend subtotaal: " + totaal.toFixed(3) + " kg CO₂";
+        document.getElementById("footprint-totaal").textContent = "Bekend subtotaal: " + totaal.toFixed(3).replace(".", ",") + " kg CO₂";
         document.getElementById("footprint-waarschuwing").textContent =
             "Onvolledige berekening: bij " + ontbrekendeRitten +
             " rit(ten) ontbreken kilometers of een bekend vervoersmiddel. Die ritten zijn niet meegerekend.";
@@ -134,3 +134,5 @@ function toonFootprint() {
 }
 
 toonFootprint();
+
+
